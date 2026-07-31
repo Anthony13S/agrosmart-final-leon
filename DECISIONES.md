@@ -264,3 +264,12 @@ PublicidadService envolvi la llamada al modelo en boundedElastic porque es una l
 HTTP bloqueante igual que JPA, y agregue onErrorResume porque la clave demo de
 LangChain4j es compartida entre todo el curso y puede fallar, asi que
 mi endpoint sigue respondiendo con un mensaje de respaldo en vez de caerse por completo 
+
+## Fase 6 (Realizado) — API reactiva con WebFlux
+
+Cree AgroSmartController con tres endpoints que solo conectan las rutas HTTP con los
+servicios que ya tenia creados sin logica propia. Ninguno devuelve List ni un objeto bloqueante,
+todo es Mono o Flux. Para el endpoint de publicidad tuve que agregar produces =
+MediaType.TEXT_PLAIN_VALUE porque por defecto Spring devolvia el String envuelto en
+JSON y el ejercicio pide en texto plano. Probe los 4 casos con curl: la lista de
+productos uno por id, un id inexistente (confirme el 404) y la publicidad generada
