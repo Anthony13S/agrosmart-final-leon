@@ -234,6 +234,27 @@ esa y no otra?
 puntaje**; su omisión o falsedad sí constituye falta de honestidad académica.
 
 >
+## Fase 1 (Realizado) — Configuración y perfiles
+
+Active el perfil prod en application.properties porque necesito que la app arranque
+siempre con mi configuracion de puerto (8193) y no con la de desarrollo por defecto
+Al principio configure Docker Compose Support pero Docker Desktop no funciono en mi
+maquina por falta de soporte de virtualizacion que no lo tengo activado en la bios y para no hacer 
+mayor tiempo de duracion de la prueba cambie a la Opcion B
+instale PostgreSQL localmente y declare spring.datasource.url, username y
+password apuntando a mi base agrosmart_db creada con psql
+
+
+## Fase 2 (Realizado) — Persistencia con JPA/Hibernate
+
+Cree ProductoEntity mapeada a mi tabla tbl_productos_base_93 con las columnas exactas
+que pide el enunciado: id_producto con IDENTITY, nombre_producto con length 120 y
+unique, precio_usd como BigDecimal con precision 10 y escala 2. A diferencia de mi
+modelo de dominio Producto, esta clase si tiene constructor vacio y setters porque
+Hibernate los necesita para materializar los objetos al leer de la base de datos. Sembre los 5
+productos (3 validos, 2 invalidos) con un CommandLineRunner que verifica
+repository.count() == 0 para no duplicar en cada reinicio
+
 
 ## Fase 3 (Realizado) — Modelo inmutable y lógica funcional
 
@@ -273,3 +294,13 @@ todo es Mono o Flux. Para el endpoint de publicidad tuve que agregar produces =
 MediaType.TEXT_PLAIN_VALUE porque por defecto Spring devolvia el String envuelto en
 JSON y el ejercicio pide en texto plano. Probe los 4 casos con curl: la lista de
 productos uno por id, un id inexistente (confirme el 404) y la publicidad generada
+
+## Fase 7 (Realizado) — Pruebas unitarias
+
+Cubri ProductoTest con los getters y las dos copias defensivas (entrada y salida)
+ProductoFiltersTest cubre el caso valido y los dos casos invalidos del Predicate
+ProductoServiceTest mockea ProductoRepository con Mockito para no depender de
+PostgreSQL y usa StepVerifier para probar los 3 casos: emision de los 3 validos,
+emision del generico cuando todos son invalidos, y error cuando el id no existe
+PublicidadServiceTest mockea AgroSmartAIService y cubre el camino correcto y el del fallo
+del onErrorResume. Las 11 pruebas pasan en verde sin tocar la base de datos ni internet
