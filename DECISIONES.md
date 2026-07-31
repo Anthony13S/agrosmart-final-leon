@@ -254,3 +254,13 @@ defaultIfEmpty para el caso donde meciona que todos los productos son invalidos,
 completandose normalmente, solo cambia lo que se emite. En cambio use switchIfEmpty en
 buscarPorId porque no encontrar un producto especifico por id es un error real, no un
 caso vacio que se pueda rellenar con un valor generico
+
+## Fase 5 (Realizado) — Módulo de IA con LangChain4j
+
+Cree AgroSmartAIService como una interfaz con @AiService porque LangChain4j se encarga
+de implementarla automaticamente en tiempo de ejecucion, leyendo el prompt de
+@UserMessage y la configuracion que ya tenia en application-prod.properties. En
+PublicidadService envolvi la llamada al modelo en boundedElastic porque es una llamada
+HTTP bloqueante igual que JPA, y agregue onErrorResume porque la clave demo de
+LangChain4j es compartida entre todo el curso y puede fallar, asi que
+mi endpoint sigue respondiendo con un mensaje de respaldo en vez de caerse por completo 
