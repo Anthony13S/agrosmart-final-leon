@@ -5,6 +5,7 @@ y LangChain4j, para el examen final
 
 **Autor:** Anthony Samir Leon Jativa
 **Universidad:** Universidad de las Fuerzas Armadas ESPE
+**Link repositorio:** https://github.com/Anthony13S/agrosmart-final-leon
 
 ## Mi semilla personal
 
