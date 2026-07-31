@@ -7,8 +7,8 @@
 - **Nombre completo:**  Leon Jativa Anthony Samir
 - **Cédula:** 1728626993
 - **NRC:** 30405
-- **Nonce del examen:**  AGS-2026          <!-- código publicado por el docente en la sesión -->
-- **Fecha y hora de inicio:**   2026-07-30   <!-- formato: 2026-XX-XX HH:MM -->
+- **Nonce del examen:**  AGS-2026          
+- **Fecha y hora de inicio:**   2026-07-30   19:00
 
 ---
 
@@ -50,10 +50,10 @@ se busca en una tabla.
 > incógnito antes de cerrar la entrega — si no abre sin tu sesión iniciada, equivale a no
 > haberlo entregado y C8 se califica en nivel 1.
 
-- **Enlace al video (5 min, cámara + pantalla):**
-- **Plataforma:**                  <!-- Drive institucional / OneDrive / YouTube no listado -->
+- **Enlace al video (5 min, cámara + pantalla):** 
+- **Plataforma:**    https://drive.google.com/file/d/1liYsVYd5TAvqS5c3eFb1--uKqKU9wCMy/view?usp=sharing              
 - **Acceso verificado en incógnito:**   ☐ Sí
-- **Duración real:**
+- **Duración real:**  07:43 segundos
 
 ---
 
@@ -63,4 +63,4 @@ Declaro que este repositorio es de mi autoría individual, que sustentaré oralm
 decisión de diseño que contiene, y que el historial de commits refleja fielmente el
 proceso de desarrollo que realicé.
 
-**Firma (nombre completo):**
+**Firma (nombre completo):**  Anthony Samir Leon Jativa
