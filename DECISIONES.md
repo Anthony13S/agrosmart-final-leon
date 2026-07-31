@@ -234,3 +234,12 @@ esa y no otra?
 puntaje**; su omisión o falsedad sí constituye falta de honestidad académica.
 
 >
+
+## Fase 3 (Realizado) — Modelo inmutable y lógica funcional
+
+Hice el Producto final y sin setters porque quiero que una vez creado, nadie pueda
+cambiar su estado. La copia defensiva en el constructor evita que si alguien sigue
+teniendo la lista de correos original la modifique y afecte mi objeto por dentro, la
+del getter evita lo mismo pero al revés que quien reciba la lista desde afuera pueda
+tocar mi estado interno. A_MAYUSCULAS no modifica el producto que recibe, construye uno
+nuevo -- si mutara el original, estaría rompiendo la inmutabilidad que acabo de exigir
