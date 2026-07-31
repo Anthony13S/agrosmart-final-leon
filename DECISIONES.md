@@ -243,3 +243,14 @@ teniendo la lista de correos original la modifique y afecte mi objeto por dentro
 del getter evita lo mismo pero al reves que quien reciba la lista desde afuera pueda
 tocar mi estado interno. A_MAYUSCULAS no modifica el producto que recibe, construye uno
 nuevo, por ultimo si mutara el original, estaria rompiendo la inmutabilidad que acabo de exigir
+
+
+## Fase 4 (Realizado) — Servicio reactivo y aislamiento del bloqueo
+
+Envolvi repository.findAll() en Mono.fromCallable().subscribeOn(boundedElastic) porque
+JPA es una llamada bloqueante, si la ejecutara directo en el event loop de Netty,
+bloquearia el hilo que atiende todas las peticiones concurrentes de la app. Use
+defaultIfEmpty para el caso donde meciona que todos los productos son invalidos, porque el flujo sigue
+completandose normalmente, solo cambia lo que se emite. En cambio use switchIfEmpty en
+buscarPorId porque no encontrar un producto especifico por id es un error real, no un
+caso vacio que se pueda rellenar con un valor generico
